@@ -54,6 +54,7 @@ public class Play{
 		double bgpOdds = randomGenerator();
 		int bigPlayOddsYards;
 		
+		// For positive yardage
 		if(in == true){
 			if(bgpOdds >= .97){
 				bigPlayOddsYards = rand.nextInt(21) + 75;
@@ -86,6 +87,7 @@ public class Play{
 				//System.out.println("Normal" + " Yards gained " + randomNum + " Random # " + bgpOdds);
 			}
 		}
+		// for negative yardage
 		else{
 			if(bgpOdds >= .95){
 				bigPlayOddsYards = rand.nextInt(6) + 10;

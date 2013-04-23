@@ -1,7 +1,11 @@
 
 import java.util.Scanner;
 
-/*4/4/13 Lots of things commented out right now.  I am fairly confident in the program
+/*
+3/23/13 Keith Bergstedts Nine Man Football
+A text based football game in Java by Seth Aho
+Named after my high school football coach. 
+4/4/13 Lots of things commented out right now.  I am fairly confident in the program
 running properly at this point but just want to keep them commented out for now.
 I still need a way to get back into the game after scoring a touchdown.  The recursive
 technique seems to be working in the PlayCaller method, just unsure at this point as to
@@ -19,113 +23,45 @@ around with play odds/thinking about having downs as classes:
 also it would be nice on longer plays say it is a 30 yard touchdown but it says the play went for 79
 It was nice for testing but it needs to be dealt with.
 4) I can maybe think about cleaning up some commented out code?
+
 */
 
-
-
 public class FootballGame{
-	//private static int whatYardLine;
-	//private static int yardsToGo;
-
+	
 	public static void main(String args[]){
 	
-		PlayCaller headCoach = new PlayCaller();
-		ScoreAndPossession whoseBall = new ScoreAndPossession();
-		Defense teamDefense = new Defense();
-		boolean gameOn = true; 	// Master loop boolean 
+		PlayCaller headCoach = new PlayCaller(); // main playcall area
+		ScoreAndPossession whoseBall = new ScoreAndPossession(); // Possession tracker
+		Defense otherTeam = new Defense(); // for keeping track of other teams score, not implemented yet
+		boolean gameOn = true; 	// Master loop boolean now way to exit in main
 		boolean offense;	// tracking the offense loop
 		boolean defense; 	// tracking the defense loop
 		
-		/*
-		
-		Dive d1 = new Dive();
-		Lead l1 = new Lead();
-		Sweep s1 = new Sweep();
-		DoubleDump dd1 = new DoubleDump();
-		DownAndDistance toGo = new DownAndDistance(1,10);
-		FieldPosition positionOnField = new FieldPosition(20);
-		boolean result;
-		int playYards;
-		*/
-		
-		Scanner keyboard = new Scanner(System.in);
-		int choice;
-		
+	
 		System.out.println("Welcome to Keith Bergstedt's Nine Man Football");
-		//do{
-		/*
-		System.out.println("\nSelect which play you would like:");
-		System.out.println("1: 23 Dive" + "\n" + "2: 33 Lead" + "\n" + "3: 28 Sweep" + "\n" + "4: Double Dump" + "\n5. Quit");
-		System.out.print("Choice: ");
-		choice = keyboard.nextInt();
-		headCoach.callPlay(choice);
-		*/
+
+		whoseBall.setHomePossession();	// Set user team to have the ball first
+		offense = whoseBall.getPossession();  // to switch between the offense and defense 
 		
-		whoseBall.setHomePossession();	// testing 4/5/2013
-		offense = whoseBall.getPossession();  // added 4/10/2013
-		//System.out.println("The value of test is " + test);  // added 4/10/2013 for testing
-		/*4/5/13 Need to figure out a way to get out of the while loop.  If i do score a touchdown
-		I am still getting the offensive play calls.
-		*/
 		
 		while(gameOn){
-		
-			
+			// Gameplay loop will switch from offense to defense, no plays called on defense
+			// just shows if they score or not.  Offense first.  Game exit is taking care of in
+			// PlayCaller
 			while(offense){
 				headCoach.run();
 				offense = whoseBall.getPossession();
-				//System.out.println("The value of test is " + test); // added 4/10/13 for testing
 			}
 		
-			//test = whoseBall.getPossession();
-			//System.out.println("The value of test is " + test);  // added 4/10/2013 for testing
-		
+			// Defensive portion
 			while(!offense){
-				teamDefense.score();
+				otherTeam.score();
 				offense = whoseBall.getPossession();
 			}
-		
-			//test = whoseBall.getPossession();
-			//System.out.println("The value of test is " + test);  // added 4/10/2013 for testing
-		
+	
 		
 		}
-		//headCoach.run();
-		
-		//}while(test);
-		
-		
-		/*
-		for(int i = 0; i < 25; i++){ // test purpose loop
-		d1.positiveNegative();
-		result = d1.getResult();
-		d1.setYardage();
-		playYards = d1.getYardage();
-		//System.out.println(playYards);
-		whatYardLine = positionOnField.getYardLine(result, playYards);
-		yardsToGo = toGo.yardsForFirstDown(result, playYards);
-		
-		if(result == false){
-			System.out.println("Loss of " + playYards + " yards on the play.");
-		}
-		else{
-			System.out.println("Gain of " + playYards + " yards on the play.");
-		}
-		
-		System.out.println("Ball on the " + whatYardLine + " yard line.");
-		System.out.println("It is " + toGo.getDown() + " down and " + yardsToGo + " yards for the first down");
-		//System.out.println("It is " + toGo.getDown() + " down.");
-		System.out.println();
-		
-		*/
-		//System.out.println(dive.getResult());
-		//System.out.println(dive.yardage());
-		//}
-		
-		//dive.setLoss();
-		//System.out.println(dive);
-		//System.out.println(togo);
-		//System.out.println(ym);
+	
 	}
 
 }

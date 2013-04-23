@@ -3,6 +3,7 @@ the loop and the system exit by putting the recursive method into Play Caller
 so I should be able to get rid of those comments.  
 4/5/13 Added setDown method to try and help out FieldPosition class to get out of recursive
 method in PlayCaller.  Not sure if this is needed
+
 */
 
 

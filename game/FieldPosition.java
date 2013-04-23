@@ -15,7 +15,6 @@ public class FieldPosition{
 	ScoreAndPossession spTracker = new ScoreAndPossession();
 	DownAndDistance changeDown = new DownAndDistance();
 	
-	// zz = new DownAndDistance();
 	
 	public FieldPosition(){
 	}
@@ -76,12 +75,6 @@ public class FieldPosition{
 	public void setOpposingTwenty(){
 		yardMarker = 80;
 	}
-
-
-
-	// public String toString(){
-		// return "TouchDown!";
-	// }
 	
 	// 4/10/13 Trying to get the field postion moved after the defense is stopped to some random location
 	public void setNewPosition(){

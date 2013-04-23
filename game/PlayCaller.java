@@ -1,4 +1,10 @@
-/* 4/4/14 Happy with how this turned out so far. Just added it last night. 
+/* 
+3/23/13 Main playcalling area and where the "meat" of the game takes shape. Get user
+input for which play is called and send to methods to get result of play and display
+outcome to user.  Funny story behind only the 4 play choices.  We had a tshirt made up
+that said "Cromwell's Playbook" and on the back had these four plays drawn up on them.  
+They were probably called 60-70% of the time.
+4/4/14 Happy with how this turned out so far. Just added it last night. 
 The recursive run method seems to be working fine as far as the downs are concerned.
 need to figure out how to get this to run after scoring a touchdown.
 4/5/14 Added changePossession to try and get possession changed 
@@ -9,68 +15,31 @@ exiting the method
 import java.util.Scanner;
 public class PlayCaller{
 	Scanner keyboard = new Scanner(System.in);
-	private static int whatYardLine;
-	private static int yardsToGo;
+	private static int whatYardLine;  // to keep track of fieldposition
+	private static int yardsToGo;	// to keep track of yards for for first down
 	
-	private int choice;
-	private boolean result;
-	private int playYards;
-	Dive d1 = new Dive();
-	Lead l1 = new Lead();
-	Sweep s1 = new Sweep();
-	DoubleDump dd1 = new DoubleDump();
-	DownAndDistance toGo = new DownAndDistance(1,10);
-	FieldPosition positionOnField = new FieldPosition(20);
-	ScoreAndPossession changePossession = new ScoreAndPossession();
-	
-	public void callPlay(int in) {
-		switch(in){
-			case 1:
-				d1.positiveNegative();
-				result = d1.getResult();
-				d1.setYardage();
-				playYards = d1.getYardage();
-				System.out.println("\nDive called");
-				break;
-			case 2:
-				l1.positiveNegative();
-				result = l1.getResult();
-				l1.setYardage();
-				playYards = l1.getYardage();
-				System.out.println("\nLead called");
-				break;
-			case 3:
-				s1.positiveNegative();
-				result = s1.getResult();
-				s1.setYardage();
-				playYards = s1.getYardage();
-				System.out.println("\nSweep called");
-				break;
-			case 4:
-				dd1.positiveNegative();
-				result = dd1.getResult();
-				dd1.setYardage();
-				playYards = dd1.getYardage();
-				System.out.println("\nDouble Dump called");
-				break;
-			case 5:
-				System.exit(0);
-				break;
-			default:
-				System.exit(0);
-		}
-	}
-	
-	
+	private int choice; // For user input
+	private boolean result;  // to keep track of a +/- play
+	private int playYards;  // to keep track of yards gained or lost on the play
+	Dive d1 = new Dive();  // one of the plays that can be called
+	Lead l1 = new Lead();  // one of the plays that can be called
+	Sweep s1 = new Sweep();  // one of the plays that can be called
+	DoubleDump dd1 = new DoubleDump(); // one of the plays that can be called
+	DownAndDistance toGo = new DownAndDistance(1,10);  // variable for method to keep track of down and distance
+	FieldPosition positionOnField = new FieldPosition(20);  // variable for method to keep track of field position
+	ScoreAndPossession changePossession = new ScoreAndPossession();  // variable for score and possession
 	
 	public void run(){
+		// Recursive method for getting user input on which play to call. Will exit out of if loop and display message if
+		// you turnover on downs.  No option to punt yet.  Displays yards gained or lost on the play and the new down and
+		// distance
 		if(toGo.getDown() <= 4){
-		
+			// Get user input
 			System.out.println("\nSelect which play you would like:");
 			System.out.println("1: 23 Dive" + "\n" + "2: 33 Lead" + "\n" + "3: 28 Sweep" + "\n" + "4: Double Dump" + "\n5. Quit");
 			System.out.print("Choice: ");
 			choice = keyboard.nextInt();
-			callPlay(choice);
+			callPlay(choice);  // send to switch statement below.
 		
 			whatYardLine = positionOnField.getYardLine(result, playYards);
 			yardsToGo = toGo.yardsForFirstDown(result, playYards);
@@ -113,5 +82,44 @@ public class PlayCaller{
 			return;
 		
 	}// end of run method
+	
+	public void callPlay(int in) {
+		// Send to the play called to get if play is gain or loss and the yards gained on the play
+		switch(in){
+			case 1:
+				d1.positiveNegative();
+				result = d1.getResult();
+				d1.setYardage();
+				playYards = d1.getYardage();
+				System.out.println("\nDive called");
+				break;
+			case 2:
+				l1.positiveNegative();
+				result = l1.getResult();
+				l1.setYardage();
+				playYards = l1.getYardage();
+				System.out.println("\nLead called");
+				break;
+			case 3:
+				s1.positiveNegative();
+				result = s1.getResult();
+				s1.setYardage();
+				playYards = s1.getYardage();
+				System.out.println("\nSweep called");
+				break;
+			case 4:
+				dd1.positiveNegative();
+				result = dd1.getResult();
+				dd1.setYardage();
+				playYards = dd1.getYardage();
+				System.out.println("\nDouble Dump called");
+				break;
+			case 5:
+				System.exit(0);
+				break;
+			default:
+				System.exit(0);
+		}
+	}
 
 }

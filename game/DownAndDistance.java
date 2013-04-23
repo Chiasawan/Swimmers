@@ -2,7 +2,7 @@
 the loop and the system exit by putting the recursive method into Play Caller
 so I should be able to get rid of those comments.  
 4/5/13 Added setDown method to try and help out FieldPosition class to get out of recursive
-method in PlayCaller.
+method in PlayCaller.  Not sure if this is needed
 */
 
 
@@ -43,8 +43,6 @@ public class DownAndDistance{
 	
 	// Method sets the down and the distance.
 	public int yardsForFirstDown(boolean in, int yards){
-		//if(down <= 4){//Needs work and some sort of loop to get back into this
-					  // Just exiting out now for sake of testing
 			// Positivie yards
 			if(in == true){
 				// Greater than 10 yards automatic first down
@@ -81,16 +79,6 @@ public class DownAndDistance{
 				return distance += yards;
 			}
 		
-		//}//if loop
-		//else{
-		//	System.out.println("Loss of Downs");
-		//	System.exit(0);
-		//	return 0;
-		//}
 	}
-	
-	//public String toString(){
-	//	return "Yards to go " + yardsForFirstDown();
-	//}
-	
+
 }

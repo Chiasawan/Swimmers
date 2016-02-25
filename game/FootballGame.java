@@ -1,5 +1,6 @@
 
 import java.util.Scanner;
+import java.util.Date;
 
 /*
 3/23/13 Keith Bergstedts Nine Man Football
@@ -36,7 +37,8 @@ public class FootballGame{
 		boolean gameOn = true; 	// Master loop boolean now way to exit in main
 		boolean offense;	// tracking the offense loop
 		boolean defense; 	// tracking the defense loop
-		
+		long startTime = System.currentTimeMillis();
+		long elapsedTime = 0L;	
 	
 		System.out.println("Welcome to Keith Bergstedt's Nine Man Football");
 
@@ -44,7 +46,7 @@ public class FootballGame{
 		offense = whoseBall.getPossession();  // to switch between the offense and defense 
 		
 		
-		while(gameOn){
+		while(gameOn && elapsedTime < 1*60*1000){
 			// Gameplay loop will switch from offense to defense, no plays called on defense
 			// just shows if they score or not.  Offense first.  Game exit is taking care of in
 			// PlayCaller
@@ -52,16 +54,16 @@ public class FootballGame{
 				headCoach.run();
 				offense = whoseBall.getPossession();
 			}
-		
 			// Defensive portion
 			while(!offense){
 				otherTeam.score();
 				offense = whoseBall.getPossession();
 			}
 	
-		
-		}
-	
+			elapsedTime = (new Date()).getTime() - startTime;
+		}		
+		System.out.println("Times up");
+		System.exit(0);
 	}
 
 }

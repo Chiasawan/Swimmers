@@ -34,11 +34,15 @@ public class ScoreAndPossession{
 	// Home team scores not attemping e.p. at this time 
 	public void homeScore(){
 		goodGuys += 7;
+		System.out.println("Home Team: "+goodGuys);
+		System.out.println("Away Team: "+badGuys);
 	}
 	
 	// Away team scores
 	public void awayScore(){
 		badGuys += 7;
+		System.out.println("Home Team: "+goodGuys);
+		System.out.println("Away Team: "+badGuys);
 	}
 	
 }

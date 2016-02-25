@@ -5,6 +5,8 @@ public class Defense{
 	has the ball.  It is reset to the 20 if they do score, odds of them scoring
 	are very high right now
 	4/5/13 Added method call to ScoreAndPossion to track score and change possession.
+	2/25/16 Adding some stuff here
+	adding more comments
 	*/
 	
 	ScoreAndPossession opponentScore = new ScoreAndPossession();

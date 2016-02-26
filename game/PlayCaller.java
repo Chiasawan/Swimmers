@@ -50,7 +50,7 @@ public class PlayCaller{
 			if(result == false){
 				System.out.println("Loss of " + playYards + " yards on the play.");
 			}
-			else{
+			else if (whatYardLine > 0){
 				System.out.println("Gain of " + playYards + " yards on the play.");
 			}
 			

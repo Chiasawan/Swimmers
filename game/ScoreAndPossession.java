@@ -6,8 +6,8 @@
 public class ScoreAndPossession{
 	
 	private static boolean ourBall;
-	private static int goodGuys;	// Home team score
-	private static int badGuys;	// Other team score
+	public static int goodGuys;	// Home team score
+	public static int badGuys;	// Other team score
 
 	public ScoreAndPossession(){
 	}
@@ -34,11 +34,15 @@ public class ScoreAndPossession{
 	// Home team scores not attemping e.p. at this time 
 	public void homeScore(){
 		goodGuys += 7;
+		System.out.println("Home Team: "+goodGuys);
+		System.out.println("Away Team: "+badGuys);
 	}
 	
 	// Away team scores
 	public void awayScore(){
 		badGuys += 7;
+		System.out.println("Home Team: "+goodGuys);
+		System.out.println("Away Team: "+badGuys);
 	}
 	
 }

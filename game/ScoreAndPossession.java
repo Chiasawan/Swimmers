@@ -6,8 +6,8 @@
 public class ScoreAndPossession{
 	
 	private static boolean ourBall;
-	public static int goodGuys;	// Home team score
-	public static int badGuys;	// Other team score
+	private static int goodGuys;	// Home team score
+	private static int badGuys;	// Other team score
 
 	public ScoreAndPossession(){
 	}
